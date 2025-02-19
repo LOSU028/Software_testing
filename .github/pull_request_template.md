@@ -4,4 +4,4 @@
 
 ### Checks
 - [ ] Tested changes
-- [ ] Owner Aproval
+- [ ] Owner Approval
