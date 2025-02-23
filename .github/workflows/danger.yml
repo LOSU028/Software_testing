@@ -1,7 +1,6 @@
 name: Danger Check
 
 on:
-  push:
   pull_request:
 
 jobs:
