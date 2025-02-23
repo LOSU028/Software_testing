@@ -1,0 +1,31 @@
+name: Danger Check
+
+on:
+  push:
+
+jobs:
+  danger:
+    name: Run Danger
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0  # Ensures all commits are available for Danger
+
+      - name: Set up Ruby
+        uses: ruby/setup-ruby@v1
+        with:
+          ruby-version: '3.1'
+
+      - name: Install Bundler
+        run: gem install bundler
+
+      - name: Install Dependencies
+        run: bundle install
+
+      - name: Run Danger
+        env:
+          DANGER_GITHUB_API_TOKEN: ${{ secrets.DANGER_GITHUB_API_TOKEN }}
+        run: bundle exec danger
